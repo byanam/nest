@@ -753,3 +753,48 @@
     update();
   }
 })();
+
+/* ══════════════════════════════════════════════════
+   Scribble underline draw animation on "Dont worry"
+   - Draws left to right when scrolled into view
+   - Replays each time it re-enters the viewport
+   ══════════════════════════════════════════════════ */
+(function initScribbleDraw() {
+  function setup() {
+    var svg = document.getElementById('dont-strikethrough');
+    if (!svg) return;
+
+    // Get exact path length for a pixel-perfect draw
+    var path = svg.querySelector('path');
+    if (path && path.getTotalLength) {
+      var len = Math.ceil(path.getTotalLength());
+      path.style.strokeDasharray = len;
+      path.style.strokeDashoffset = len;
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      // Fallback: just show it
+      svg.classList.add('draw');
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          // Reset then re-trigger so it replays every time
+          svg.classList.remove('draw');
+          void svg.offsetWidth; // force reflow
+          svg.classList.add('draw');
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(svg);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setup);
+  } else {
+    setup();
+  }
+})();
