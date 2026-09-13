@@ -1511,23 +1511,28 @@ button {
 }
 
 .hero-panel {
-  flex: 1 1 0;
   height: 100%;
   background: #000000;
   position: relative;
   overflow: hidden;
-  cursor: pointer;
   border-radius: 0;
   border: none;
   box-shadow: none;
-  transition: flex-grow 0.45s cubic-bezier(0.2, 0.9, 0.3, 1);
-  will-change: flex-grow;
 }
 
-.hero-panel:hover {
-  flex-grow: 1.45;
-  border: none;
-  box-shadow: none;
+#hp1 {
+  width: 368px;
+  flex: none;
+}
+
+#hp2 {
+  width: 532px;
+  flex: none;
+}
+
+#hp3 {
+  width: 368px;
+  flex: none;
 }
 
 /* ══════════════════════════════════════════
@@ -1547,23 +1552,18 @@ button {
 /* ══════════════════════════════════════════
    HERO — WIREFRAME MOCKUP
    ══════════════════════════════════════════ */
+/* website-wireframe-services 2 */
 #hero-wireframe {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   width: 273px;
   height: 287px;
+  left: 503px;
+  top: 467px;
   background: #ffffff;
   border-radius: 4px;
   overflow: hidden;
   pointer-events: none;
-  transition: transform 0.45s ease;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-}
-
-.hero-panel:hover #hero-wireframe {
-  transform: translate(-50%, -50%) scale(1.03);
+  z-index: 3;
 }
 
 #hero-wireframe img {
