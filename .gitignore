@@ -1,21 +1,25 @@
+# Dependencies & outputs
 node_modules/
 dist/
 build/
 .cache/
-.env*
 .vite/
 vite.config.*.timestamp-*
-*.tsbuildinfo
+
+# Logs & temporary files
+*.log
 *-debug.log*
 logs/
-*.log
-.claude-replay.*
 .tmp-*
-/.figma/design-context/
+.tempmediaStorage/
+scratch/
 
-# Platform-managed agentplat state, not project source. In the
-# client-initiated single-repo workspace layout (make's `Path: "."` spec) the
-# repo root IS the workspace root, so these land inside this repo rather than
-# beside it.
-/.plugins/
-/.opencode-skills/
+# Operating system
+.DS_Store
+Thumbs.db
+
+# Environment & local state
+.env*
+.claude/
+.plugins/
+.opencode-skills/
