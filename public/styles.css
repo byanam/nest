@@ -953,7 +953,7 @@ button {
   height: 79px;
 }
 
-/* Service card titles — exact Figma: tracking-[-1.44px], no leading, text-box-trim */
+/* Service card titles — exact Figma: tracking-[-1.44px], no leading */
 .svc-title {
   position: absolute;
   top: 2505px;
@@ -964,23 +964,19 @@ button {
   letter-spacing: -1.44px;
   line-height: normal;
   white-space: nowrap;
-  transform: translateX(-50%);
-  text-box-trim: trim-both;
-  text-box-edge: cap alphabetic;
-  text-box: trim-both cap alphabetic;
   z-index: 2;
 }
 
 #st1 {
-  left: 158px;
+  left: 56px;
 }
 
 #st2 {
-  left: 578px;
+  left: 476px;
 }
 
 #st3 {
-  left: 998px;
+  left: 896px;
 }
 
 /* Service card descriptions — exact Figma: tracking-[-1.2px], no leading, text-box-trim */
