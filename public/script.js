@@ -805,25 +805,26 @@
 })();
 
 /* ══════════════════════════════════════════════════
-   Scribble underline draw animation on "Dont worry"
+   Red underline draw animations:
+   1. "Dont worry" red scribble underline
+   2. "Who are WE" red scribble underline
    - Draws left to right when scrolled into view
    - Replays each time it re-enters the viewport
    ══════════════════════════════════════════════════ */
 (function initScribbleDraw() {
-  function setup() {
-    var svg = document.getElementById('dont-strikethrough');
+  function setupUnderline(id) {
+    var svg = document.getElementById(id);
     if (!svg) return;
 
     // Get exact path length for a pixel-perfect draw
     var path = svg.querySelector('path');
     if (path && path.getTotalLength) {
-      var len = Math.ceil(path.getTotalLength());
+      var len = Math.ceil(path.getTotalLength()) + 2;
       path.style.strokeDasharray = len;
       path.style.strokeDashoffset = len;
     }
 
     if (!('IntersectionObserver' in window)) {
-      // Fallback: just show it
       svg.classList.add('draw');
       return;
     }
@@ -831,15 +832,20 @@
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          // Reset then re-trigger so it replays every time
+          // Reset then re-trigger so it replays smoothly
           svg.classList.remove('draw');
           void svg.offsetWidth; // force reflow
           svg.classList.add('draw');
         }
       });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.3 });
 
     observer.observe(svg);
+  }
+
+  function setup() {
+    setupUnderline('dont-strikethrough');
+    setupUnderline('who-we-underline');
   }
 
   if (document.readyState === 'loading') {

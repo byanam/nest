@@ -568,6 +568,21 @@ button {
   height: 24px;
 }
 
+#who-we-underline path {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+}
+
+#who-we-underline.draw path {
+  animation: who-underline-draw 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes who-underline-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 #who-desc {
   position: absolute;
   left: 700px;
