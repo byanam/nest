@@ -1,0 +1,10 @@
+{
+  "description": "Create a fully responsive website that accurately reflects the Figma design for NEST, enhancing user experience across all devices.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
