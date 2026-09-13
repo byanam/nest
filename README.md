@@ -7,10 +7,15 @@
 </div>
 
 <p align="center">
+  <a href="https://byanam.github.io/nest/"><img src="https://img.shields.io/badge/Live%20Demo-byanam.github.io%2Fnest-fffc5f?style=flat-square&logo=googlechrome&logoColor=black" alt="Live Demo" /></a>
   <img src="https://img.shields.io/badge/Design-Neo--Brutalist-fffc5f?style=flat-square&labelColor=2f2f2f" alt="Design" />
   <img src="https://img.shields.io/badge/Scroll-Lenis_Smooth-2f2f2f?style=flat-square&logo=javascript&logoColor=fffc5f" alt="Scroll" />
   <img src="https://img.shields.io/badge/Stack-HTML5%20%7C%20CSS3%20%7C%20ES6+-orange?style=flat-square" alt="Stack" />
   <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License" />
+</p>
+
+<p align="center">
+  <strong>🔗 <a href="https://byanam.github.io/nest/">Experience Live Site (https://byanam.github.io/nest/)</a></strong>
 </p>
 
 ---
