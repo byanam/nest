@@ -1582,7 +1582,7 @@ button {
 
 #hero-btn-get-started:hover {
   transform: translateY(-2px);
-  background-color: #ffffff;
+  background-color: #fffc5f;
 }
 
 #hero-btn-get-started:active {
@@ -1615,8 +1615,8 @@ button {
 
 #hero-btn-quote:hover {
   transform: translateY(-2px);
-  border-color: #ffffff;
-  background-color: #ffffff;
+  border-color: #fffc5f;
+  background-color: #fffc5f;
 }
 
 #hero-btn-quote:hover span {
