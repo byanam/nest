@@ -94,8 +94,11 @@
   });
 })();
 
+/* ══════════════════════════════════════════════════
+   Smooth-scroll navigation anchor links
+   Scales target coordinates proportionally to viewport width
+   ══════════════════════════════════════════════════ */
 (function () {
-  /* smooth-scroll nav links */
   var sectionTops = {
     '#hero': 0,
     '#pricing': 2860,
