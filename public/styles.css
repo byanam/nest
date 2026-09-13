@@ -672,8 +672,8 @@ button {
 /* Red sketch pen tick */
 .sketch-tick {
   position: absolute;
-  left: -5px;
-  top: -8px;
+  left: -4px;
+  top: -11px;
   width: 38px;
   height: 36px;
   pointer-events: none;
@@ -699,9 +699,10 @@ button {
 
 .feat-box.checked .sketch-tick path {
   stroke-dashoffset: 0;
-  transition: stroke-dashoffset 0.24s cubic-bezier(0.2, 0.8, 0.25, 1);
+  transition: stroke-dashoffset 0.48s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
+/* Feature rows for card 1 */
 #feat1-1 {
   left: 78px;
   top: 3213px;
