@@ -16,6 +16,8 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox, modern browsers */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
 html,
@@ -23,6 +25,23 @@ body {
   background: #2f2f2f;
   overflow-x: hidden;
   position: relative;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Hide scrollbar for Chrome, Safari, Opera and WebKit browsers */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent;
+}
+
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 ::selection {
