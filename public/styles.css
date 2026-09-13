@@ -1808,16 +1808,11 @@ button {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.2s ease;
+  transition: background-color 0.2s ease;
 }
 
 #hero-btn-get-started:hover {
-  transform: translateY(-2px);
   background-color: #fffc5f;
-}
-
-#hero-btn-get-started:active {
-  transform: translateY(0);
 }
 
 #hero-btn-get-started span {
@@ -1841,21 +1836,16 @@ button {
   justify-content: center;
   cursor: pointer;
   background-color: transparent;
-  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.2s ease, background-color 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 #hero-btn-quote:hover {
-  transform: translateY(-2px);
   border-color: #fffc5f;
   background-color: #fffc5f;
 }
 
 #hero-btn-quote:hover span {
   color: #1a1a1a;
-}
-
-#hero-btn-quote:active {
-  transform: translateY(0);
 }
 
 #hero-btn-quote span {
