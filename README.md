@@ -112,7 +112,12 @@ Navigate to `http://localhost:3000`.
 
 ```
 Nest landing page/
+├── .github/workflows/
+│   └── static.yml          # Automated GitHub Pages deployment
 ├── index.html              # Core semantic HTML5 layout & SVG definitions
+├── vite.config.js          # Lightweight Vite configuration for local preview
+├── package.json            # Project manifest
+├── .nojekyll               # GitHub Pages Jekyll bypass
 ├── public/
 │   ├── styles.css          # Design tokens, responsive scaler & animations
 │   ├── script.js           # Scroll logic, interchange engine & observers
@@ -120,8 +125,6 @@ Nest landing page/
 │   ├── favicon.svg         # Studio yellow 'N' vector favicon
 │   ├── team.jpg            # Studio team photograph
 │   └── *.png / *.jpg       # Visual design assets & wireframes
-├── imports/                # Raw vector exports and component reference
-├── src/                    # TypeScript / React reference sources
 └── README.md               # Project documentation
 ```
 
