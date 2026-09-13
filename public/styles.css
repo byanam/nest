@@ -4,6 +4,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Instrument+Sans:wght@400;600;700&family=Instrument+Serif&display=swap');
 
 /* ══════════════════════════════════════════
+   DESIGN TOKENS
+   ══════════════════════════════════════════ */
+:root {
+  --color-yellow: #fffc5f;
+  --color-dark: #2f2f2f;
+  --color-darker: #1b1b1b;
+  --color-white: #ffffff;
+  --color-red: #ff3939;
+  --color-gray-muted: #838383;
+}
+
+/* ══════════════════════════════════════════
    RESET & BASE
    ══════════════════════════════════════════ */
 *,
@@ -12,12 +24,14 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 html {
   scroll-behavior: smooth;
-  scrollbar-width: none; /* Firefox, modern browsers */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 html,
@@ -29,19 +43,14 @@ body {
   -ms-overflow-style: none;
 }
 
-/* Hide scrollbar for Chrome, Safari, Opera and WebKit browsers */
+/* Complete scrollbar suppression across all browsers */
 html::-webkit-scrollbar,
 body::-webkit-scrollbar,
 *::-webkit-scrollbar {
-  display: none;
+  display: none !important;
   width: 0 !important;
   height: 0 !important;
-  background: transparent;
-}
-
-* {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  background: transparent !important;
 }
 
 /* ══════════════════════════════════════════
