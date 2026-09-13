@@ -1272,14 +1272,18 @@ button {
   color: #fffc5f;
 }
 
-/* Red strikethrough on "Dont" */
+/* Red scribble underline on "Dont" */
 #dont-strikethrough {
   position: absolute;
   left: 37px;
-  top: 1978px;
+  top: 2008px;
   width: 147px;
   height: 38px;
   z-index: 1;
+}
+
+#dont-strikethrough path {
+  stroke-width: 8px;
 }
 
 /* ══════════════════════════════════════════
