@@ -1603,7 +1603,7 @@ button {
   top: 314px;
   width: 209px;
   height: 50px;
-  border: 3px solid #d9d9d9;
+  border: 1.5px solid #d9d9d9;
   border-radius: 25px;
   display: flex;
   align-items: center;
