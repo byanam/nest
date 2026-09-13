@@ -960,7 +960,7 @@ button {
 }
 
 .svc-icon:hover {
-  animation: icon-spin-once 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: icon-spin-once 1.4s ease-in-out forwards;
 }
 
 @keyframes icon-spin-once {
