@@ -36,10 +36,9 @@ body {
   top: 0;
   left: 0;
   height: 3px;
-  background: linear-gradient(90deg, #fffc5f, #ffe838);
+  background: #fffc5f;
   z-index: 99999;
   width: 0%;
-  box-shadow: 0 0 10px rgba(255, 252, 95, 0.85);
   pointer-events: none;
   transition: width 0.08s ease-out;
 }
@@ -286,13 +285,12 @@ button {
   overflow: hidden;
   background: #3a3a3a;
   border-radius: 8px;
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   cursor: default;
 }
 
 #who-photo:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
+  transform: translateY(-4px);
 }
 
 #who-photo img {
@@ -303,7 +301,7 @@ button {
 }
 
 #who-photo:hover img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 #who-title {
@@ -333,15 +331,6 @@ button {
   top: 4489px;
   width: 158px;
   height: 24px;
-}
-
-#who-we-underline path {
-  transition: filter 0.3s ease;
-}
-
-#who-we-underline:hover path,
-#who-title:hover ~ #who-we-underline path {
-  filter: drop-shadow(0 0 8px rgba(255, 57, 57, 0.7));
 }
 
 #who-desc {
@@ -427,13 +416,12 @@ button {
   border-radius: 39px;
   border: 2px solid #bfbd47;
   padding: 0;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: default;
 }
 
 .t-card:hover {
   transform: translateY(-8px);
-  filter: drop-shadow(0 14px 20px rgba(0, 0, 0, 0.28));
 }
 
 #tc1 {
@@ -858,19 +846,17 @@ button {
   text-align: center;
   line-height: 52px;
   cursor: pointer;
-  transition: transform 0.22s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.22s ease, background-color 0.22s ease, color 0.22s ease;
+  transition: transform 0.22s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.22s ease, color 0.22s ease;
 }
 
 .price-btn:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   background: #ffff75;
   color: #4a4812;
-  box-shadow: 0 8px 24px rgba(255, 252, 95, 0.4), 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .price-btn:active {
   transform: translateY(1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 #pbtn1 {
@@ -936,13 +922,12 @@ button {
   border-radius: 39px;
   box-shadow: inset 0px 4px 0px 0px rgba(0, 0, 0, 0.25);
   z-index: 1;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: default;
 }
 
 .svc-card:hover {
-  transform: translateY(-6px);
-  box-shadow: inset 0px 4px 0px 0px rgba(0, 0, 0, 0.25), 0 14px 24px rgba(0, 0, 0, 0.16);
+  transform: translateY(-4px);
 }
 
 #sc1 {
@@ -1294,13 +1279,12 @@ button {
   color: #fffc5f;
   letter-spacing: -3.36px;
   line-height: 1;
-  transition: transform 0.25s ease, text-shadow 0.25s ease;
+  transition: transform 0.2s ease;
   cursor: pointer;
 }
 
 #nav-logo:hover {
-  transform: scale(1.06);
-  text-shadow: 0 0 14px rgba(255, 252, 95, 0.7);
+  transform: scale(1.04);
 }
 
 .nav-link {
@@ -1312,7 +1296,7 @@ button {
   color: #d9d9d9;
   letter-spacing: -1.92px;
   line-height: 1;
-  transition: color 0.25s ease, text-shadow 0.25s ease;
+  transition: color 0.2s ease;
 }
 
 .nav-link::after {
@@ -1326,12 +1310,10 @@ button {
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
-  box-shadow: 0 0 8px rgba(255, 252, 95, 0.6);
 }
 
 .nav-link:hover {
   color: #ffffff;
-  text-shadow: 0 0 12px rgba(255, 252, 95, 0.4);
 }
 
 .nav-link:hover::after {
@@ -1410,11 +1392,6 @@ button {
   font-size: 64px;
   color: #fffc5f;
   line-height: 1;
-  transition: text-shadow 0.25s ease;
-}
-
-.stat:hover .stat-num {
-  text-shadow: 0 0 16px rgba(255, 252, 95, 0.5);
 }
 
 .stat-label {
@@ -1475,18 +1452,16 @@ button {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.25s ease, background-color 0.25s ease;
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.2s ease;
 }
 
 #hero-btn-get-started:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   background-color: #ffffff;
-  box-shadow: 0 10px 25px rgba(217, 217, 217, 0.35);
 }
 
 #hero-btn-get-started:active {
   transform: translateY(0);
-  box-shadow: 0 4px 10px rgba(217, 217, 217, 0.2);
 }
 
 #hero-btn-get-started span {
@@ -1509,13 +1484,12 @@ button {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.2s ease;
 }
 
 #hero-btn-quote:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   border-color: #ffffff;
-  box-shadow: 0 10px 25px rgba(217, 217, 217, 0.18);
 }
 
 #hero-btn-quote:hover span {
@@ -1532,7 +1506,7 @@ button {
   font-size: 20px;
   color: #d9d9d9;
   line-height: 1;
-  transition: color 0.25s ease;
+  transition: color 0.2s ease;
 }
 
 /* ══════════════════════════════════════════
