@@ -1381,6 +1381,7 @@ button {
   width: 254px;
   transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
   cursor: default;
+  z-index: 5;
 }
 
 .stat:hover {
@@ -1399,12 +1400,106 @@ button {
   top: 264px;
 }
 
+/* Squarespace staggered entrance reveal */
+.stat-inner {
+  opacity: 0;
+  transform: translateY(22px);
+  animation: sqspStatCardReveal 1.1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  will-change: opacity, transform;
+}
+
+#stat1 .stat-inner {
+  animation-delay: 0.15s;
+}
+
+#stat2 .stat-inner {
+  animation-delay: 0.35s;
+}
+
+#stat3 .stat-inner {
+  animation-delay: 0.55s;
+}
+
+@keyframes sqspStatCardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .stat-num {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 64px;
   color: #fffc5f;
   line-height: 1;
+  display: flex;
+  align-items: baseline;
+  overflow: hidden;
+  height: 64px;
+  letter-spacing: -0.02em;
+}
+
+.stats__counter {
+  display: inline-flex;
+  align-items: baseline;
+  line-height: 1;
+  height: 64px;
+  overflow: hidden;
+  position: relative;
+}
+
+.stats__digit {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 64px;
+  line-height: 64px;
+  vertical-align: baseline;
+}
+
+.stats__sizer {
+  visibility: hidden;
+  display: block;
+  height: 64px;
+  line-height: 64px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.stats__number {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  line-height: 64px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  color: #fffc5f;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform;
+}
+
+.stats__suffix {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  color: #fffc5f;
+  line-height: 64px;
+  vertical-align: baseline;
+  margin-left: 0.02em;
 }
 
 .stat-label {

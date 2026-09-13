@@ -495,5 +495,194 @@
   }
 })();
 
+/* ══════════════════════════════════════════════
+   Hero Social Proof — Squarespace-Style Spring-Driven Rolling Counter
+   - Exactly matches Squarespace counter algorithm (stiffness: 100, damping: 30)
+   - Digits rotate on vertical drum reels with seamless circular wrapping
+   - Staggered entrance timing (0.15s, 0.35s, 0.55s) with interactive hover re-spin
+   ══════════════════════════════════════════════ */
+(function () {
+  var counters = document.querySelectorAll('.stats__counter');
+  if (!counters.length) return;
+
+  var DIGIT_HEIGHT = 64;
+  var STIFFNESS = 100;
+  var DAMPING = 30;
+
+  function getDigitOffset(digitChar, currentVal, h) {
+    var a = parseInt(digitChar, 10);
+    var t = ((currentVal % 10) + 10) % 10;
+    var s = (10 + a - t) % 10;
+    var i = s * h;
+    if (s > 5) i -= 10 * h;
+    return i;
+  }
+
+  function setupCounter(counter) {
+    var targetVal = parseInt(counter.getAttribute('data-value'), 10) || 0;
+    var suffix = counter.getAttribute('data-suffix') || '';
+
+    // Determine places (e.g. 100 -> [100, 10, 1], 9 -> [1], 20 -> [10, 1])
+    var places = [];
+    if (targetVal >= 100) {
+      places = [100, 10, 1];
+    } else if (targetVal >= 10) {
+      places = [10, 1];
+    } else {
+      places = [1];
+    }
+
+    // Build drum reels
+    counter.innerHTML = '';
+    var reels = [];
+
+    places.forEach(function (place) {
+      var digitSpan = document.createElement('span');
+      digitSpan.className = 'stats__digit';
+      digitSpan.setAttribute('data-place', place);
+
+      // Dummy sizer to reserve character width
+      var sizer = document.createElement('span');
+      sizer.className = 'stats__sizer';
+      sizer.setAttribute('aria-hidden', 'true');
+      sizer.textContent = '0';
+      digitSpan.appendChild(sizer);
+
+      var numSpans = [];
+      for (var a = 0; a <= 9; a++) {
+        var numSpan = document.createElement('span');
+        numSpan.className = 'stats__number';
+        numSpan.setAttribute('data-digit', a);
+        numSpan.setAttribute('aria-hidden', 'true');
+        numSpan.textContent = a;
+        digitSpan.appendChild(numSpan);
+        numSpans.push(numSpan);
+      }
+
+      counter.appendChild(digitSpan);
+      reels.push({
+        place: place,
+        numSpans: numSpans,
+        spring: { pos: 0, vel: 0 },
+        finalN: targetVal / place
+      });
+    });
+
+    if (suffix) {
+      var sufSpan = document.createElement('span');
+      sufSpan.className = 'stats__suffix';
+      sufSpan.textContent = suffix;
+      counter.appendChild(sufSpan);
+    }
+
+    // Set initial positions at 0
+    reels.forEach(function (reel) {
+      reel.numSpans.forEach(function (span, a) {
+        var offset = getDigitOffset(a, 0, DIGIT_HEIGHT);
+        span.style.transform = (offset === 0) ? 'none' : 'translate3d(0,' + offset + 'px,0)';
+      });
+    });
+
+    var isAnimating = false;
+    var animFrame = null;
+
+    function playAnimation() {
+      if (isAnimating) cancelAnimationFrame(animFrame);
+      isAnimating = true;
+
+      // Reset spring states to 0 so it rolls from start
+      reels.forEach(function (reel) {
+        reel.spring.pos = 0;
+        reel.spring.vel = 0;
+      });
+
+      var startTime = performance.now();
+      var lastTime = startTime;
+      var countDuration = 550; // ms to count up q to target value
+
+      function frame(now) {
+        var dt = Math.min(0.033, (now - lastTime) / 1000);
+        lastTime = now;
+        if (dt <= 0) dt = 0.016;
+
+        var elapsed = now - startTime;
+        var q = Math.min(targetVal, (elapsed / countDuration) * targetVal);
+
+        var allSettled = elapsed >= countDuration;
+
+        reels.forEach(function (reel) {
+          var targetN = q / reel.place;
+          var diff = reel.spring.pos - targetN;
+          var force = -STIFFNESS * diff - DAMPING * reel.spring.vel;
+          reel.spring.vel += force * dt;
+          reel.spring.pos += reel.spring.vel * dt;
+
+          if (Math.abs(reel.spring.pos - reel.finalN) > 0.003 || Math.abs(reel.spring.vel) > 0.005) {
+            allSettled = false;
+          }
+
+          var currentPos = reel.spring.pos;
+          reel.numSpans.forEach(function (span, a) {
+            var offset = getDigitOffset(a, currentPos, DIGIT_HEIGHT);
+            span.style.transform = (Math.abs(offset) < 0.05) ? 'none' : 'translate3d(0,' + offset.toFixed(2) + 'px,0)';
+          });
+        });
+
+        if (!allSettled) {
+          animFrame = requestAnimationFrame(frame);
+        } else {
+          // Snap final exact target digits
+          reels.forEach(function (reel) {
+            reel.spring.pos = reel.finalN;
+            reel.spring.vel = 0;
+            reel.numSpans.forEach(function (span, a) {
+              var offset = getDigitOffset(a, reel.finalN, DIGIT_HEIGHT);
+              span.style.transform = (Math.abs(offset) < 0.05) ? 'none' : 'translate3d(0,' + Math.round(offset) + 'px,0)';
+            });
+          });
+          isAnimating = false;
+        }
+      }
+
+      animFrame = requestAnimationFrame(frame);
+    }
+
+    return {
+      play: playAnimation,
+      element: counter
+    };
+  }
+
+  var counterControllers = [];
+  counters.forEach(function (c) {
+    counterControllers.push(setupCounter(c));
+  });
+
+  // Staggered launch matching Squarespace timing
+  function startAll() {
+    counterControllers.forEach(function (ctrl, idx) {
+      setTimeout(function () {
+        ctrl.play();
+      }, 150 + idx * 200);
+    });
+  }
+
+  // Interactive re-spin on hover over stat cards
+  document.querySelectorAll('.stat').forEach(function (statEl, idx) {
+    statEl.addEventListener('mouseenter', function () {
+      if (counterControllers[idx]) {
+        counterControllers[idx].play();
+      }
+    });
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startAll);
+  } else {
+    startAll();
+  }
+})();
+
+
 
 
