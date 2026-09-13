@@ -327,27 +327,37 @@ button {
   top: 3633px;
   height: 171px;
   border: 11px solid #fffbfb;
-  box-sizing: border-box;
 }
 
 #feedback-heading {
   position: absolute;
-  left: 50%;
-  top: 3625px;
-  transform: translateX(-50%);
+  width: 695px;
+  height: 183px;
+  left: 52px;
+  top: 3621px;
   font-family: 'Instrument Sans', sans-serif;
+  font-style: normal;
   font-weight: 600;
   font-variation-settings: 'wdth' 100;
   font-size: 150px;
-  color: #fffc5f;
-  line-height: 1;
+  line-height: 183px;
+  color: #FFFC5F;
   white-space: nowrap;
-  text-align: center;
   z-index: 1;
 }
 
 #feedback-sub {
-  display: none;
+  position: absolute;
+  left: 759px;
+  top: 3651px;
+  width: 482px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 300;
+  font-variation-settings: 'wdth' 100;
+  font-size: 64px;
+  letter-spacing: -2.56px;
+  line-height: 62px;
+  z-index: 1;
 }
 
 #fb-sub-light {
