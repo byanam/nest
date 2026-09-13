@@ -73,6 +73,9 @@ html.lenis body {
   overflow: hidden;
 }
 
+/* ══════════════════════════════════════════
+   BASE ELEMENTS
+   ══════════════════════════════════════════ */
 ::selection {
   background: #fffc5f;
   color: #1a1a1a;
@@ -80,11 +83,14 @@ html.lenis body {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 button {
   border: none;
+  background: none;
   cursor: pointer;
+  font-family: inherit;
 }
 
 /* ══════════════════════════════════════════
