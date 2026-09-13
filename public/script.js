@@ -48,8 +48,8 @@
     }
   }
 
-  window.addEventListener('resize', fitToScreen);
-  window.addEventListener('orientationchange', fitToScreen);
+  window.addEventListener('resize', fitToScreen, { passive: true });
+  window.addEventListener('orientationchange', fitToScreen, { passive: true });
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', fitToScreen);
