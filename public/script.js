@@ -283,3 +283,104 @@
   onScroll();
 })();
 
+/* ══════════════════════════════════════════════
+   Pricing Section — Fast Scroll-Driven Red Sketch Pen Ticks (Top to Bottom)
+   ══════════════════════════════════════════════ */
+(function () {
+  // Ordered strictly from top to bottom (row-by-row across Starter, Growth, Scale)
+  var featIds = [
+    'feat1-1', // Row 1 (y=3213px): Logo design (Starter)
+    'feat1-2', // Row 2 (y=3253px): Brand identity (Starter)
+    'feat2-1', // Row 2 (y=3255px): App design & development (Growth)
+    'feat3-1', // Row 2 (y=3255px): Paid advertising (Scale)
+    'feat1-3', // Row 3 (y=3293px): Landing page (Starter)
+    'feat2-2', // Row 3 (y=3295px): Marketing creatives (Growth)
+    'feat3-2', // Row 3 (y=3295px): Analytics & reporting (Scale)
+    'feat1-4', // Row 4 (y=3333px): Social media kit (Starter)
+    'feat2-3', // Row 4 (y=3335px): Content design (Growth)
+    'feat3-3', // Row 4 (y=3335px): Ongoing creative support (Scale)
+    'feat1-5', // Row 5 (y=3373px): Brand guidelines (Starter)
+    'feat2-4', // Row 5 (y=3375px): Campaign assets (Growth)
+    'feat3-4'  // Row 5 (y=3375px): Dedicated project support (Scale)
+  ];
+
+  var featBoxes = [];
+
+  function ensureTickSvg(box) {
+    if (!box.querySelector('.sketch-tick')) {
+      var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('class', 'sketch-tick');
+      svg.setAttribute('viewBox', '0 0 38 36');
+      svg.setAttribute('fill', 'none');
+      var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', 'M4 17C5.5 20 9.5 26.5 13.5 29C17 26.5 26 12 35 3');
+      svg.appendChild(path);
+      box.appendChild(svg);
+    }
+  }
+
+  function initBoxes() {
+    featBoxes = [];
+    featIds.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) {
+        var box = el.querySelector('.feat-box');
+        if (box) {
+          ensureTickSvg(box);
+          featBoxes.push(box);
+        }
+      }
+    });
+  }
+
+  function updatePricingTicks() {
+    if (featBoxes.length !== featIds.length) {
+      initBoxes();
+    }
+    if (featBoxes.length === 0) return;
+
+    var clientWidth = document.documentElement.clientWidth || window.innerWidth;
+    var scale = clientWidth / 1280;
+    var scrollY = window.scrollY || window.pageYOffset || 0;
+    var winHeight = window.innerHeight || 800;
+
+    // Trigger window: as the user scrolls over the pricing card features
+    // Cards start at y=3029px, features at y=3213px to 3375px
+    var startY = 3020 * scale - winHeight * 0.58;
+    // Measured scroll window so checkboxes trigger progressively at a comfortable, leisurely pace
+    var scrollRange = 160 * scale;
+
+    var progress = (scrollY - startY) / scrollRange;
+
+    var numBoxes = featBoxes.length;
+    var checkedCount = 0;
+    if (progress > 0) {
+      checkedCount = Math.min(numBoxes, Math.floor(progress * (numBoxes + 0.4)));
+    }
+
+    for (var i = 0; i < numBoxes; i++) {
+      var box = featBoxes[i];
+      if (!box) continue;
+
+      if (i < checkedCount) {
+        if (!box.classList.contains('checked')) {
+          box.classList.add('checked');
+        }
+      } else {
+        if (box.classList.contains('checked')) {
+          box.classList.remove('checked');
+        }
+      }
+    }
+  }
+
+  window.addEventListener('scroll', updatePricingTicks, { passive: true });
+  window.addEventListener('resize', updatePricingTicks, { passive: true });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updatePricingTicks);
+  } else {
+    updatePricingTicks();
+  }
+})();
+
