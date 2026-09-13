@@ -14,11 +14,34 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   background: #2f2f2f;
   overflow-x: hidden;
   position: relative;
+}
+
+::selection {
+  background: #fffc5f;
+  color: #1a1a1a;
+}
+
+/* Scroll Progress Bar at top of viewport */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #fffc5f, #ffe838);
+  z-index: 99999;
+  width: 0%;
+  box-shadow: 0 0 10px rgba(255, 252, 95, 0.85);
+  pointer-events: none;
+  transition: width 0.08s ease-out;
 }
 
 a {
@@ -169,11 +192,15 @@ button {
   line-height: 1;
   white-space: nowrap;
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition: color 0.25s ease, transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
   user-select: none;
 }
 
-.faq-q:hover,
+.faq-q:hover {
+  transform: translateX(8px);
+  color: #fffc5f;
+}
+
 .faq-item.open .faq-q {
   color: #fffc5f;
 }
@@ -258,12 +285,25 @@ button {
   height: 576px;
   overflow: hidden;
   background: #3a3a3a;
+  border-radius: 8px;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+  cursor: default;
+}
+
+#who-photo:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
 }
 
 #who-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#who-photo:hover img {
+  transform: scale(1.05);
 }
 
 #who-title {
@@ -293,6 +333,15 @@ button {
   top: 4489px;
   width: 158px;
   height: 24px;
+}
+
+#who-we-underline path {
+  transition: filter 0.3s ease;
+}
+
+#who-we-underline:hover path,
+#who-title:hover ~ #who-we-underline path {
+  filter: drop-shadow(0 0 8px rgba(255, 57, 57, 0.7));
 }
 
 #who-desc {
@@ -378,6 +427,13 @@ button {
   border-radius: 39px;
   border: 2px solid #bfbd47;
   padding: 0;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease;
+  cursor: default;
+}
+
+.t-card:hover {
+  transform: translateY(-8px);
+  filter: drop-shadow(0 14px 20px rgba(0, 0, 0, 0.28));
 }
 
 #tc1 {
@@ -447,6 +503,11 @@ button {
   left: 0;
   font-size: 36px;
   line-height: 1;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.t-card:hover .t-qmark {
+  transform: scale(1.15) rotate(-8deg);
 }
 
 .t-qmark-close {
@@ -659,6 +720,12 @@ button {
   font-variation-settings: 'wdth' 100;
   font-size: 20px;
   color: #838383;
+  transition: color 0.2s ease;
+  cursor: default;
+}
+
+.feat:hover {
+  color: #c4c4c4;
 }
 
 .feat-box {
@@ -790,6 +857,20 @@ button {
   letter-spacing: -2.03px;
   text-align: center;
   line-height: 52px;
+  cursor: pointer;
+  transition: transform 0.22s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.22s ease, background-color 0.22s ease, color 0.22s ease;
+}
+
+.price-btn:hover {
+  transform: translateY(-3px);
+  background: #ffff75;
+  color: #4a4812;
+  box-shadow: 0 8px 24px rgba(255, 252, 95, 0.4), 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.price-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 #pbtn1 {
@@ -855,6 +936,13 @@ button {
   border-radius: 39px;
   box-shadow: inset 0px 4px 0px 0px rgba(0, 0, 0, 0.25);
   z-index: 1;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.svc-card:hover {
+  transform: translateY(-6px);
+  box-shadow: inset 0px 4px 0px 0px rgba(0, 0, 0, 0.25), 0 14px 24px rgba(0, 0, 0, 0.16);
 }
 
 #sc1 {
@@ -1206,6 +1294,13 @@ button {
   color: #fffc5f;
   letter-spacing: -3.36px;
   line-height: 1;
+  transition: transform 0.25s ease, text-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+#nav-logo:hover {
+  transform: scale(1.06);
+  text-shadow: 0 0 14px rgba(255, 252, 95, 0.7);
 }
 
 .nav-link {
@@ -1217,6 +1312,30 @@ button {
   color: #d9d9d9;
   letter-spacing: -1.92px;
   line-height: 1;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #fffc5f;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 0 8px rgba(255, 252, 95, 0.6);
+}
+
+.nav-link:hover {
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(255, 252, 95, 0.4);
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
 }
 
 #nav-pricing {
@@ -1265,6 +1384,12 @@ button {
   position: absolute;
   left: 990px;
   width: 254px;
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: default;
+}
+
+.stat:hover {
+  transform: translateX(6px);
 }
 
 #stat1 {
@@ -1285,6 +1410,11 @@ button {
   font-size: 64px;
   color: #fffc5f;
   line-height: 1;
+  transition: text-shadow 0.25s ease;
+}
+
+.stat:hover .stat-num {
+  text-shadow: 0 0 16px rgba(255, 252, 95, 0.5);
 }
 
 .stat-label {
@@ -1345,6 +1475,18 @@ button {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+#hero-btn-get-started:hover {
+  transform: translateY(-3px);
+  background-color: #ffffff;
+  box-shadow: 0 10px 25px rgba(217, 217, 217, 0.35);
+}
+
+#hero-btn-get-started:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(217, 217, 217, 0.2);
 }
 
 #hero-btn-get-started span {
@@ -1367,6 +1509,21 @@ button {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+#hero-btn-quote:hover {
+  transform: translateY(-3px);
+  border-color: #ffffff;
+  box-shadow: 0 10px 25px rgba(217, 217, 217, 0.18);
+}
+
+#hero-btn-quote:hover span {
+  color: #ffffff;
+}
+
+#hero-btn-quote:active {
+  transform: translateY(0);
 }
 
 #hero-btn-quote span {
@@ -1375,6 +1532,7 @@ button {
   font-size: 20px;
   color: #d9d9d9;
   line-height: 1;
+  transition: color 0.25s ease;
 }
 
 /* ══════════════════════════════════════════
