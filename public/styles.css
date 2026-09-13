@@ -327,12 +327,14 @@ button {
   top: 3633px;
   height: 171px;
   border: 11px solid #fffbfb;
+  box-sizing: border-box;
 }
 
 #feedback-heading {
   position: absolute;
-  left: 52px;
-  top: 3621px;
+  left: 50%;
+  top: 3625px;
+  transform: translateX(-50%);
   font-family: 'Instrument Sans', sans-serif;
   font-weight: 600;
   font-variation-settings: 'wdth' 100;
@@ -340,21 +342,12 @@ button {
   color: #fffc5f;
   line-height: 1;
   white-space: nowrap;
+  text-align: center;
   z-index: 1;
 }
 
 #feedback-sub {
-  position: absolute;
-  left: 759px;
-  top: 3651px;
-  width: 482px;
-  font-family: 'Instrument Sans', sans-serif;
-  font-weight: 300;
-  font-variation-settings: 'wdth' 100;
-  font-size: 64px;
-  letter-spacing: -2.56px;
-  line-height: 62px;
-  z-index: 1;
+  display: none;
 }
 
 #fb-sub-light {
