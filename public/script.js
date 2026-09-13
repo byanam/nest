@@ -69,7 +69,7 @@
     '#faq': 5113
   };
 
-  var navLinks = document.querySelectorAll('.nav-link');
+  var navLinks = document.querySelectorAll('.nav-link, .footer-nav-link, .footer-cta-btn');
   navLinks.forEach(function (link) {
     link.addEventListener('click', function (e) {
       var href = link.getAttribute('href');
