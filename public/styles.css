@@ -1180,7 +1180,9 @@ button {
   z-index: 1;
 }
 
-/* Exact Figma: Inter Regular 64px, leading-[normal], no tracking, whitespace-nowrap */
+/* ══════════════════════════════════════════
+   WHO ARE OUR CLIENTS — VALUE PROPOSITIONS
+   ══════════════════════════════════════════ */
 #clients-title {
   position: absolute;
   left: calc(50% - 3.5px);
