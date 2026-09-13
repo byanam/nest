@@ -1,6 +1,6 @@
 import { useState } from "react";
+import imgWireframe from "./hero-wireframe.png";
 const imgRectangle15 = "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop";
-const imgWireframe = "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=400&auto=format&fit=crop";
 
 /* ── Navbar ── */
 function NavBar({ onNav }: { onNav: (id: string) => void }) {
