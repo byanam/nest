@@ -65,6 +65,7 @@
     var original = track.querySelector('svg');
     if (original) {
       var clone = original.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
       track.appendChild(clone);
     }
   }
