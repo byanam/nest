@@ -330,7 +330,8 @@ button {
   font-size: 36px;
   color: #838383;
   line-height: 1.3;
-  text-align: justify;
+  text-align: left;
+  text-wrap: pretty;
 }
 
 /* ══════════════════════════════════════════
