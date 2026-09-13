@@ -44,6 +44,26 @@ body::-webkit-scrollbar,
   -ms-overflow-style: none;
 }
 
+/* ══════════════════════════════════════════
+   LENIS SMOOTH SCROLL (AWWWARDS GRADE)
+   ══════════════════════════════════════════ */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 ::selection {
   background: #fffc5f;
   color: #1a1a1a;

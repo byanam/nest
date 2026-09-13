@@ -1,3 +1,32 @@
+/* ══════════════════════════════════════════════
+   Awwwards-Grade Smooth Inertial Scrolling (Lenis)
+   ══════════════════════════════════════════════ */
+(function initSmoothScroll() {
+  if (typeof Lenis === 'undefined') return;
+
+  var lenis = new Lenis({
+    duration: 1.25,
+    easing: function (t) {
+      return Math.min(1, 1.001 - Math.pow(2, -10 * t));
+    },
+    orientation: 'vertical',
+    gestureOrientation: 'vertical',
+    smoothWheel: true,
+    wheelMultiplier: 1.0,
+    touchMultiplier: 1.5,
+    infinite: false,
+  });
+
+  window.lenis = lenis;
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+})();
+
 /* Dynamic responsive scaling to fit full width on any screen (Windows, Mac, etc.) */
 (function () {
   function fitToScreen() {
@@ -11,6 +40,10 @@
     scaler.style.transform = 'scale(' + scale + ')';
     scaler.style.transformOrigin = 'top left';
     wrapper.style.height = Math.ceil(6716 * scale) + 'px';
+
+    if (window.lenis && typeof window.lenis.resize === 'function') {
+      window.lenis.resize();
+    }
   }
 
   window.addEventListener('resize', fitToScreen);
@@ -77,10 +110,15 @@
         e.preventDefault();
         var clientWidth = document.documentElement.clientWidth || window.innerWidth;
         var scale = clientWidth / 1280;
-        window.scrollTo({
-          top: sectionTops[href] * scale,
-          behavior: 'smooth'
-        });
+        var targetTop = sectionTops[href] * scale;
+        if (window.lenis) {
+          window.lenis.scrollTo(targetTop, { duration: 1.4 });
+        } else {
+          window.scrollTo({
+            top: targetTop,
+            behavior: 'smooth'
+          });
+        }
       }
     });
   });
@@ -92,7 +130,12 @@
     btnStart.addEventListener('click', function () {
       var clientWidth = document.documentElement.clientWidth || window.innerWidth;
       var scale = clientWidth / 1280;
-      window.scrollTo({ top: 2860 * scale, behavior: 'smooth' });
+      var targetTop = 2860 * scale;
+      if (window.lenis) {
+        window.lenis.scrollTo(targetTop, { duration: 1.4 });
+      } else {
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+      }
     });
   }
 
@@ -102,7 +145,12 @@
     btnQuote.addEventListener('click', function () {
       var clientWidth = document.documentElement.clientWidth || window.innerWidth;
       var scale = clientWidth / 1280;
-      window.scrollTo({ top: 2860 * scale, behavior: 'smooth' });
+      var targetTop = 2860 * scale;
+      if (window.lenis) {
+        window.lenis.scrollTo(targetTop, { duration: 1.4 });
+      } else {
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+      }
     });
   }
 })();
