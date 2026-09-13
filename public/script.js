@@ -683,6 +683,73 @@
   }
 })();
 
+/* ══════════════════════════════════════════════════════════════════════
+   Scroll-Driven Word-by-Word Text Highlight for "Who are we" Section
+   - Progressively illuminates words from left to right, line by line
+   - Smoothly transitions from muted (opacity 0.22) to brilliant white (opacity 1.0)
+   - Real-time responsive to scroll position (forward and backward)
+   ══════════════════════════════════════════════════════════════════════ */
+(function initWhoWordHighlight() {
+  var whoDesc = document.getElementById('who-desc');
+  if (!whoDesc) return;
 
+  var words = whoDesc.querySelectorAll('.who-word');
+  if (words.length === 0) {
+    var text = whoDesc.textContent.trim();
+    var tokens = text.split(/\s+/);
+    whoDesc.innerHTML = tokens.map(function (w) {
+      return '<span class="who-word">' + w + '</span>';
+    }).join(' ');
+    words = whoDesc.querySelectorAll('.who-word');
+  }
 
+  var totalWords = words.length;
+  if (totalWords === 0) return;
 
+  var isTicking = false;
+
+  function update() {
+    var rect = whoDesc.getBoundingClientRect();
+    var winH = window.innerHeight || document.documentElement.clientHeight || 800;
+
+    // Trigger start: when element enters lower screen (82% down viewport)
+    // Trigger end: when element reaches comfortable upper-mid reading position (28% down viewport)
+    var triggerStart = winH * 0.82;
+    var triggerEnd = winH * 0.28;
+
+    var progress = (triggerStart - rect.top) / (triggerStart - triggerEnd);
+    progress = Math.max(0, Math.min(1, progress));
+
+    var activeProgress = progress * totalWords;
+
+    for (var i = 0; i < totalWords; i++) {
+      var diff = activeProgress - i;
+      if (diff >= 1) {
+        words[i].style.opacity = '1';
+      } else if (diff <= 0) {
+        words[i].style.opacity = '0.22';
+      } else {
+        var op = 0.22 + 0.78 * diff;
+        words[i].style.opacity = op.toFixed(3);
+      }
+    }
+
+    isTicking = false;
+  }
+
+  function onScroll() {
+    if (!isTicking) {
+      isTicking = true;
+      requestAnimationFrame(update);
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', update);
+  } else {
+    update();
+  }
+})();
