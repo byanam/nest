@@ -440,32 +440,5 @@
   }
 })();
 
-/* ══════════════════════════════════════════════
-   Global — Top Reading / Scroll Progress Bar
-   ══════════════════════════════════════════════ */
-(function () {
-  var progressBar = document.getElementById('scroll-progress');
-  if (!progressBar) return;
-
-  function updateScrollProgress() {
-    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    if (docHeight <= 0) {
-      progressBar.style.width = '0%';
-      return;
-    }
-    var scrollY = window.scrollY || window.pageYOffset || 0;
-    var progress = Math.min(100, Math.max(0, (scrollY / docHeight) * 100));
-    progressBar.style.width = progress + '%';
-  }
-
-  window.addEventListener('scroll', updateScrollProgress, { passive: true });
-  window.addEventListener('resize', updateScrollProgress, { passive: true });
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', updateScrollProgress);
-  } else {
-    updateScrollProgress();
-  }
-})();
 
 
