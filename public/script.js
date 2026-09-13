@@ -284,7 +284,7 @@
 })();
 
 /* ══════════════════════════════════════════════
-   Pricing Section — Fast Scroll-Driven Red Sketch Pen Ticks (Top to Bottom)
+   Pricing Section — Automatic Cascade of Red Sketch Pen Ticks (Top to Bottom)
    ══════════════════════════════════════════════ */
 (function () {
   // Ordered strictly from top to bottom (row-by-row across Starter, Growth, Scale)
@@ -305,6 +305,9 @@
   ];
 
   var featBoxes = [];
+  var isPlaying = false;
+  var hasPlayed = false;
+  var playTimer = null;
 
   function ensureTickSvg(box) {
     if (!box.querySelector('.sketch-tick')) {
@@ -333,7 +336,50 @@
     });
   }
 
-  function updatePricingTicks() {
+  function startAutomaticTicking() {
+    if (featBoxes.length !== featIds.length) {
+      initBoxes();
+    }
+    if (featBoxes.length === 0 || isPlaying || hasPlayed) return;
+
+    isPlaying = true;
+    hasPlayed = true;
+
+    var index = 0;
+    var intervalMs = 130; // Triggers each box in sequence at a natural, paced rate
+
+    function tickNext() {
+      if (index < featBoxes.length) {
+        var box = featBoxes[index];
+        if (box && !box.classList.contains('checked')) {
+          box.classList.add('checked');
+        }
+        index++;
+        playTimer = setTimeout(tickNext, intervalMs);
+      } else {
+        isPlaying = false;
+        playTimer = null;
+      }
+    }
+
+    tickNext();
+  }
+
+  function resetTicking() {
+    if (playTimer) {
+      clearTimeout(playTimer);
+      playTimer = null;
+    }
+    isPlaying = false;
+    hasPlayed = false;
+    for (var i = 0; i < featBoxes.length; i++) {
+      if (featBoxes[i]) {
+        featBoxes[i].classList.remove('checked');
+      }
+    }
+  }
+
+  function checkPricingVisibility() {
     if (featBoxes.length !== featIds.length) {
       initBoxes();
     }
@@ -344,43 +390,53 @@
     var scrollY = window.scrollY || window.pageYOffset || 0;
     var winHeight = window.innerHeight || 800;
 
-    // Trigger window: as the user scrolls over the pricing card features
-    // Cards start at y=3029px, features at y=3213px to 3375px
-    var startY = 3020 * scale - winHeight * 0.58;
-    // Measured scroll window so checkboxes trigger progressively at a comfortable, leisurely pace
-    var scrollRange = 520 * scale;
+    // Trigger when user gets to the pricing page
+    var triggerY = 3020 * scale - winHeight * 0.70;
+    // Reset if user scrolls back up far above pricing
+    var resetY = 3020 * scale - winHeight * 0.95;
 
-    var progress = (scrollY - startY) / scrollRange;
-
-    var numBoxes = featBoxes.length;
-    var checkedCount = 0;
-    if (progress > 0) {
-      checkedCount = Math.min(numBoxes, Math.floor(progress * (numBoxes + 0.4)));
-    }
-
-    for (var i = 0; i < numBoxes; i++) {
-      var box = featBoxes[i];
-      if (!box) continue;
-
-      if (i < checkedCount) {
-        if (!box.classList.contains('checked')) {
-          box.classList.add('checked');
-        }
-      } else {
-        if (box.classList.contains('checked')) {
-          box.classList.remove('checked');
-        }
+    if (scrollY >= triggerY) {
+      if (!hasPlayed && !isPlaying) {
+        startAutomaticTicking();
+      }
+    } else if (scrollY < resetY) {
+      if (hasPlayed || isPlaying) {
+        resetTicking();
       }
     }
   }
 
-  window.addEventListener('scroll', updatePricingTicks, { passive: true });
-  window.addEventListener('resize', updatePricingTicks, { passive: true });
+  window.addEventListener('scroll', checkPricingVisibility, { passive: true });
+  window.addEventListener('resize', checkPricingVisibility, { passive: true });
+
+  // Also setup IntersectionObserver for instantaneous detection when pricing section enters viewport
+  function setupObserver() {
+    initBoxes();
+    if ('IntersectionObserver' in window) {
+      var target = document.getElementById('pcb1') || document.getElementById('feat1-1') || document.getElementById('pt1');
+      if (target) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              if (!hasPlayed && !isPlaying) {
+                startAutomaticTicking();
+              }
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -15% 0px' });
+        observer.observe(target);
+      }
+    }
+  }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', updatePricingTicks);
+    document.addEventListener('DOMContentLoaded', function () {
+      setupObserver();
+      checkPricingVisibility();
+    });
   } else {
-    updatePricingTicks();
+    setupObserver();
+    checkPricingVisibility();
   }
 })();
 
