@@ -1136,9 +1136,8 @@ button {
 
 .price-btn:hover {
   transform: translateY(-2px);
-  background: #d8c508;
-  color: #1b1b1b;
-  box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.35);
+  background: #ffff75;
+  color: #4a4812;
 }
 
 .price-btn:active {
