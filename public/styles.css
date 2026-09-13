@@ -1273,10 +1273,10 @@ button {
   left: 896px;
 }
 
-/* Service card descriptions — exact Figma: tracking-[-1.2px] */
+/* Service card descriptions — shifted upwards beneath headings */
 .svc-desc {
   position: absolute;
-  top: 2538px;
+  top: 2526px;
   width: 321px;
   font-family: 'Inter', sans-serif;
   font-weight: 300;
