@@ -955,6 +955,17 @@ button {
   width: 82px;
   height: 82px;
   z-index: 2;
+  transform-origin: center center;
+  transition: transform 0s;
+}
+
+.svc-icon:hover {
+  animation: icon-spin-once 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes icon-spin-once {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 #sicon1 {
