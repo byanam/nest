@@ -62,16 +62,18 @@
 (function () {
   /* smooth-scroll nav links */
   var sectionTops = {
+    '#hero': 0,
     '#pricing': 2860,
     '#feedback': 3600,
-    '#about': 4390
+    '#about': 4390,
+    '#faq': 5113
   };
 
   var navLinks = document.querySelectorAll('.nav-link');
   navLinks.forEach(function (link) {
     link.addEventListener('click', function (e) {
       var href = link.getAttribute('href');
-      if (sectionTops[href]) {
+      if (sectionTops[href] !== undefined) {
         e.preventDefault();
         var clientWidth = document.documentElement.clientWidth || window.innerWidth;
         var scale = clientWidth / 1280;
