@@ -348,7 +348,7 @@
     // Cards start at y=3029px, features at y=3213px to 3375px
     var startY = 3020 * scale - winHeight * 0.58;
     // Measured scroll window so checkboxes trigger progressively at a comfortable, leisurely pace
-    var scrollRange = 160 * scale;
+    var scrollRange = 520 * scale;
 
     var progress = (scrollY - startY) / scrollRange;
 
