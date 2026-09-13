@@ -284,6 +284,61 @@
 })();
 
 /* ══════════════════════════════════════════════
+   "Whaaaa......" Scroll-Driven Dynamic Dots & Slow Blink
+   - Dots start at 1 and increase sequentially to 6 as user scrolls into the section
+   - Once finalized at 6 dots, the 6th dot blinks slowly
+   ══════════════════════════════════════════════ */
+(function () {
+  var whaaTitle = document.getElementById('whaa-title');
+  if (!whaaTitle) return;
+
+  var whaaDots = whaaTitle.querySelectorAll('.whaa-dot');
+  if (!whaaDots.length) return;
+
+  var lastDotIndex = whaaDots.length - 1;
+
+  function updateDots() {
+    var rect = whaaTitle.getBoundingClientRect();
+    var windowH = window.innerHeight || document.documentElement.clientHeight || 800;
+
+    // Start with 0 dots while above threshold, then sequentially reveal 1 to 6 dots
+    var startThreshold = windowH * 0.82;
+    var endThreshold = windowH * 0.35;
+    var travel = startThreshold - endThreshold;
+    var progress = (startThreshold - rect.top) / travel;
+
+    var count = 0;
+    if (progress > 0) {
+      count = Math.min(6, Math.floor(progress * 6) + 1);
+    }
+
+    for (var i = 0; i < whaaDots.length; i++) {
+      if (i < count) {
+        whaaDots[i].classList.add('active');
+      } else {
+        whaaDots[i].classList.remove('active');
+      }
+    }
+
+    // When finalized after increasing (all 6 dots visible), the last dot blinks slowly
+    if (count === whaaDots.length) {
+      whaaDots[lastDotIndex].classList.add('blinking');
+    } else {
+      whaaDots[lastDotIndex].classList.remove('blinking');
+    }
+  }
+
+  window.addEventListener('scroll', updateDots, { passive: true });
+  window.addEventListener('resize', updateDots, { passive: true });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateDots);
+  } else {
+    updateDots();
+  }
+})();
+
+/* ══════════════════════════════════════════════
    Pricing Section — Automatic Cascade of Red Sketch Pen Ticks (Top to Bottom)
    ══════════════════════════════════════════════ */
 (function () {
