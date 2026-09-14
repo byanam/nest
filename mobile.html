@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>NEST — Creative Studio (Mobile)</title>
+  <meta name="description"
+    content="High-impact creative studio landing page with neo-brutalist dark aesthetic and horizontal kinetic swipe experience.">
+  <meta name="theme-color" content="#2F2F2F">
+  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg">
+
+  <!-- Desktop redirect for screens wider than 768px -->
+  <script>
+    if (window.innerWidth > 768 && !window.location.search.includes('mobile=1')) {
+      window.location.replace('index.html' + window.location.search + window.location.hash);
+    }
+  </script>
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Instrument+Sans:wght@400;600;700&family=Instrument+Serif&display=swap"
+    rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="./public/mobile.css">
+</head>
+
+<body>
+
+  <!-- Fixed Top Header -->
+  <header id="mobile-header">
+    <div class="m-logo">NEST</div>
+    <div class="m-header-center">
+      <div class="m-slide-counter"><span id="slide-curr">01</span> / 07</div>
+    </div>
+    <button class="m-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- Slide-out Drawer Navigation -->
+  <nav id="mobile-drawer" aria-label="Mobile slide navigation">
+    <div class="m-drawer-nav">
+      <a href="#slide-hero" class="m-drawer-link active" data-slide="0"><span class="idx">01</span>Overview <span>→</span></a>
+      <a href="#slide-showcase" class="m-drawer-link" data-slide="1"><span class="idx">02</span>Showcase &amp; Proof <span>→</span></a>
+      <a href="#slide-clients" class="m-drawer-link" data-slide="2"><span class="idx">03</span>Clients &amp; Scale <span>→</span></a>
+      <a href="#slide-pricing" class="m-drawer-link" data-slide="3"><span class="idx">04</span>Pricing &amp; Plans <span>→</span></a>
+      <a href="#slide-feedback" class="m-drawer-link" data-slide="4"><span class="idx">05</span>Client Feedback <span>→</span></a>
+      <a href="#slide-about" class="m-drawer-link" data-slide="5"><span class="idx">06</span>Who We Are <span>→</span></a>
+      <a href="#slide-faq" class="m-drawer-link" data-slide="6"><span class="idx">07</span>FAQ &amp; Studio <span>→</span></a>
+    </div>
+    <div class="m-drawer-cta">
+      <a href="#slide-pricing" class="m-btn-primary" data-slide="3">View Pricing &amp; Plans</a>
+    </div>
+  </nav>
+
+  <!-- Horizontal Scroll Container -->
+  <main id="mobile-slider">
+
+    <!-- ══════════════════════════════════════════
+         SLIDE 1: HERO
+         ══════════════════════════════════════════ -->
+    <section class="mobile-slide" id="slide-hero" aria-label="Studio Overview">
+      <span class="m-tag">CREATIVE STUDIO FOR STARTUPS</span>
+      <h1 class="m-title">
+        Have a Startup?<br>
+        <span class="m-title-accent">We'll help you.</span>
+      </h1>
+      <p class="m-subtitle">
+        Obsessive digital craft, high-performance web systems, and bespoke identity design for ambitious founders.
+      </p>
+
+      <div class="m-hero-actions">
+        <a href="#slide-pricing" class="m-btn-primary" data-slide="3">Get Started</a>
+        <a href="#slide-showcase" class="m-btn-secondary" data-slide="1">Explore Work ↓</a>
+      </div>
+
+      <div class="hero-stats-grid">
+        <div class="m-stat-box">
+          <div class="m-stat-number">15+</div>
+          <div class="m-stat-label">Awards &amp; Features</div>
+        </div>
+        <div class="m-stat-box">
+          <div class="m-stat-number">$9M+</div>
+          <div class="m-stat-label">Founder Revenue</div>
+        </div>
+        <div class="m-stat-box">
+          <div class="m-stat-number">3 Wks</div>
+          <div class="m-stat-label">Average Sprint</div>
+        </div>
+        <div class="m-stat-box">
+          <div class="m-stat-number">100%</div>
+          <div class="m-stat-label">Bespoke Code</div>
+        </div>
+      </div>
+
+      <div class="m-swipe-hint">
+        <span>Swipe left to explore</span>
+        <span>→</span>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SLIDE 2: SHOWCASE & PROOF
+         ══════════════════════════════════════════ -->
+    <section class="mobile-slide" id="slide-showcase" aria-label="Interactive Showcase">
+      <span class="m-tag">PORTFOLIO &amp; PROOF</span>
+      <div class="m-proof-hero">
+        <h3>Whaaaa... having second thoughts?</h3>
+        <p style="margin-top: 6px; font-size: 18px; color: #d9d9d9;">
+          <span style="position: relative; display: inline-block;">
+            Dont
+            <svg id="m-dont-scribble" class="m-proof-scribble" viewBox="0 0 147 38" fill="none" aria-hidden="true">
+              <path
+                d="M9 29C9.01 26.5 9.57 20.7 10.9 18.5C12.6 15.9 14.9 15.3 18.9 15.1C22.5 14.9 26.4 20.8 28 20.9C31.4 20.9 38.4 12.3 41.9 9.8C44.7 7.8 48.3 11.3 51 13.3C53.1 14.8 54.7 17.5 58.4 19.1C60.8 20.1 63.2 19 67.6 15.4C71.9 11.9 75.4 10.9 78.1 11.5C79.7 11.8 82.3 16.7 85.2 20.2C86.1 21.3 88.8 21.2 92.2 21.1C96.2 21 99.5 13.6 100.9 12.7C103.8 10.8 108.5 12.8 111.1 15C115.1 18.3 118.1 18.6 120.8 17.9C123.5 17.2 126.6 11.9 128.7 9.8C129.5 9 132 9 135.1 9C136.2 9 136.5 9.5 136.8 10.6C137.2 11.7 137.5 13.6 137.8 14.8C138 16 138 16.5 138 17"
+                stroke="#FF3939" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span> worry, we got <strong style="color: var(--color-yellow);">PROOOF.</strong>
+        </p>
+      </div>
+
+      <div class="m-showcase-cards">
+        <div class="m-showcase-item">
+          <img src="./public/carousel-brand.jpg" alt="Bespoke brand architecture" loading="lazy">
+          <div class="m-showcase-text">
+            <h4>Brand Architecture &amp; Identity</h4>
+            <p>Complete visual systems, custom typography, and vector guidelines that build category leaders.</p>
+          </div>
+        </div>
+
+        <div class="m-showcase-item">
+          <img src="./public/carousel-mobile.jpg" alt="High performance storefronts" loading="lazy">
+          <div class="m-showcase-text">
+            <h4>Mobile-First Platforms</h4>
+            <p>Ultra-responsive, sub-second interfaces crafted with modern vanilla physics and smooth motion.</p>
+          </div>
+        </div>
+
+        <div class="m-showcase-item">
+          <img src="./public/carousel-product.jpg" alt="Product analytics and UI proof" loading="lazy">
+          <div class="m-showcase-text">
+            <h4>Conversion-Driven Product UI</h4>
+            <p>Every interface engineered with intentional UX flow to accelerate conversions and user retention.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SLIDE 3: CLIENTS & MARQUEE
+         ══════════════════════════════════════════ -->
+    <section class="mobile-slide" id="slide-clients" aria-label="Who are our clients">
+      <span class="m-tag">PARTNERS &amp; CAPABILITIES</span>
+      <h2 class="m-title">Who Are Our Clients?</h2>
+      <p class="m-subtitle">We partner with founders ready to create distinct advantage.</p>
+
+      <div class="m-value-card">
+        <h4>Start from Scratch</h4>
+        <p>Zero to one. We establish your complete brand foundation, messaging hierarchy, and digital presence from day one.</p>
+      </div>
+
+      <div class="m-value-card">
+        <h4>Scale Without Boundaries</h4>
+        <p>Robust, reliable digital systems built to handle millions of impressions and exponential user scale globally.</p>
+      </div>
+
+      <div class="m-value-card">
+        <h4>Compound Momentum</h4>
+        <p>We convert strategic vision into measurable market momentum through targeted rapid deployment sprints.</p>
+      </div>
+
+      <!-- Infinite Logo Marquee -->
+      <div class="m-marquee-container" aria-label="Client partners">
+        <div class="m-marquee-track">
+          <div class="m-marquee-item">Microsoft <span class="dot">•</span> Discord <span class="dot">•</span> Squareit <span class="dot">•</span> Microsoft <span class="dot">•</span> Discord <span class="dot">•</span> Squareit <span class="dot">•</span></div>
+          <div class="m-marquee-item">Microsoft <span class="dot">•</span> Discord <span class="dot">•</span> Squareit <span class="dot">•</span> Microsoft <span class="dot">•</span> Discord <span class="dot">•</span> Squareit <span class="dot">•</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SLIDE 4: PRICING & PLANS
+         ══════════════════════════════════════════ -->
+    <section class="mobile-slide" id="slide-pricing" aria-label="Pricing and Plans">
+      <span class="m-tag">TRANSPARENT PRICING</span>
+      <h2 class="m-title">Clear, Predictable Sprints</h2>
+      <p class="m-subtitle">No bloated scopes or surprise billing. Transparent plans for every growth stage.</p>
+
+      <div class="m-pricing-list">
+        <!-- Tier 1 -->
+        <div class="m-pricing-card">
+          <div class="m-pricing-tier">Starter</div>
+          <div class="m-pricing-price">$79<span style="font-size: 16px; font-weight: 500;">/mo</span></div>
+          <div class="m-pricing-desc">For early-stage founders launching fast.</div>
+          <ul class="m-features-list">
+            <li>Logo design &amp; vector suite</li>
+            <li>Core brand identity &amp; color tokens</li>
+            <li>Custom high-converting landing page</li>
+            <li>Social media launch kit</li>
+          </ul>
+          <button class="m-plan-btn">Get Started</button>
+        </div>
+
+        <!-- Tier 2 -->
+        <div class="m-pricing-card featured">
+          <div class="m-pricing-tier" style="color: #000000;">Growth / Pro ★</div>
+          <div class="m-pricing-price">$199<span style="font-size: 16px; font-weight: 500;">/mo</span></div>
+          <div class="m-pricing-desc">For scaling startups requiring complete craft.</div>
+          <ul class="m-features-list">
+            <li>Comprehensive design system</li>
+            <li>Multi-page responsive web experience</li>
+            <li>Kinetic micro-animations &amp; smooth scroll</li>
+            <li>Fast 48-hour revision turnarounds</li>
+          </ul>
+          <button class="m-plan-btn" style="background: #000000; color: #fffc5f;">Get Started</button>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="m-pricing-card">
+          <div class="m-pricing-tier">Enterprise / Custom</div>
+          <div class="m-pricing-price">Custom</div>
+          <div class="m-pricing-desc">Full-service dedicated studio pod.</div>
+          <ul class="m-features-list">
+            <li>Dedicated senior design &amp; eng team</li>
+            <li>End-to-end product &amp; brand direction</li>
+            <li>Ongoing weekly sprints</li>
+            <li>Guaranteed SLA &amp; direct Slack channel</li>
+          </ul>
+          <button class="m-plan-btn">Contact Us</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SLIDE 5: CLIENT FEEDBACK
+         ══════════════════════════════════════════ -->
+    <section class="mobile-slide" id="slide-feedback" aria-label="Client Feedback">
+      <span class="m-tag">TESTIMONIALS</span>
+      <h2 class="m-title">What Founders Say</h2>
+      <p class="m-subtitle">Unfiltered feedback from founders who built with NEST.</p>
+
+      <div class="m-testimonials-list">
+        <div class="m-testimonial-card">
+          <div class="m-quote-mark">“</div>
+          <p class="m-testimonial-text">
+            NEST turned our messy concept into an Awwwards-worthy platform in under three weeks. Our seed round closed within a month of launch.
+          </p>
+          <div class="m-author-name">Alex V.</div>
+          <div class="m-author-role">Founder @ Koto AI</div>
+        </div>
+
+        <div class="m-testimonial-card">
+          <div class="m-quote-mark">“</div>
+          <p class="m-testimonial-text">
+            The speed and obsessive attention to typography blew us away. They don't just design; they truly understand engineering.
+          </p>
+          <div class="m-author-name">Marcus C.</div>
+          <div class="m-author-role">CTO @ Synapse Digital</div>
+        </div>
+
+        <div class="m-testimonial-card">
+          <div class="m-quote-mark">“</div>
+          <p class="m-testimonial-text">
+            Working with NEST was the highest ROI investment we made in our brand. Zero bloated meetings, pure execution.
+          </p>
+          <div class="m-author-name">Elena R.</div>
+          <div class="m-author-role">CEO @ Valence Health</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SLIDE 6: WHO WE ARE
+         ══════════════════════════════════════════ -->
+    <section class="mobile-slide" id="slide-about" aria-label="Who We Are">
+      <span class="m-tag">THE STUDIO</span>
+      <div class="m-manifesto-title">
+        <h2>
+          who are <span class="we">WE</span>
+        </h2>
+        <svg id="m-who-underline" class="m-we-underline" viewBox="0 0 158 24" fill="none" aria-hidden="true">
+          <path
+            d="M6.5 9.5C6.5 9.4 6.8 9.1 7.7 8.6C9 7.9 13.4 9.3 19.8 11.3C26.2 13.3 29.7 15.1 30.5 14.7C31.2 14.4 36 11.6 43 8C45.8 6.5 47.4 6.5 49.5 6.5C51 6.5 55.8 8.2 63.2 11C68.7 13.1 71.3 14.7 72.3 14.9C74.3 15.3 82.3 10.8 87.4 9C89.5 8.2 97.9 13.8 102.9 16.2C103.8 16.6 109.9 14.9 118.9 12.7C123.9 11.5 126.1 11.6 128.5 12.3C138.1 15 141.9 17.1 145.7 17C146.8 16.8 148.2 16.4 149.1 16.2C150 16 150.4 15.9 151.1 15.9"
+            stroke="#FF3939" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+
+      <div class="m-team-photo-wrap">
+        <img src="./public/team.jpg" alt="The NEST creative team" loading="lazy">
+      </div>
+
+      <p class="m-manifesto-body">
+        we are a boutique digital studio dedicated to <span class="highlight">design craft</span>, <span class="highlight">creative engineering</span>, and <span class="highlight">rapid product launches</span>.
+        we believe every high-growth startup deserves an interface that feels alive, communicates authority instantly, and converts relentlessly.
+      </p>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SLIDE 7: FAQ & COLOPHON
+         ══════════════════════════════════════════ -->
+    <section class="mobile-slide" id="slide-faq" aria-label="FAQ and Studio Colophon">
+      <span class="m-tag">FAQ &amp; COLOPHON</span>
+      <h2 class="m-title">Frequently Asked</h2>
+
+      <div class="m-faq-section">
+        <div class="m-faq-accordion">
+          <div class="m-faq-item open">
+            <div class="m-faq-header">
+              <span>What exactly does NEST do?</span>
+              <span class="icon">+</span>
+            </div>
+            <div class="m-faq-content">
+              NEST is a full-service creative agency for startups. We handle branding, web design, interactive interfaces, and growth platforms.
+            </div>
+          </div>
+
+          <div class="m-faq-item">
+            <div class="m-faq-header">
+              <span>Can you build my brand from scratch?</span>
+              <span class="icon">+</span>
+            </div>
+            <div class="m-faq-content">
+              Absolutely. We start from zero and craft your complete brand identity including logo, guidelines, typography, and color palette.
+            </div>
+          </div>
+
+          <div class="m-faq-item">
+            <div class="m-faq-header">
+              <span>Can I hire NEST for just one thing?</span>
+              <span class="icon">+</span>
+            </div>
+            <div class="m-faq-content">
+              Of course. Our Starter plan is ideal for targeted deliverables like a logo system or a single high-impact landing page.
+            </div>
+          </div>
+
+          <div class="m-faq-item">
+            <div class="m-faq-header">
+              <span>How long does a sprint take?</span>
+              <span class="icon">+</span>
+            </div>
+            <div class="m-faq-content">
+              A logo sprint can be done in 1 week; a complete brand identity + interactive web platform typically takes 2–4 weeks.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Studio Colophon Box -->
+      <div class="m-colophon-box">
+        <div class="m-status-row">
+          <div class="m-pulse-dot"></div>
+          <span class="m-status-text">Available for Q3 / Q4 sprints</span>
+        </div>
+        <div class="m-clock-text" id="m-london-clock">LONDON — --:--:-- GMT</div>
+        <p style="font-size: 12px; color: #888888; line-height: 1.5;">
+          Crafted with bespoke vanilla HTML5, CSS3, and kinetic physics. Based in London, collaborating worldwide.
+        </p>
+        <div class="m-social-links">
+          <a href="https://twitter.com" target="_blank" rel="noopener">Twitter / X ↗</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="https://github.com" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://dribbble.com" target="_blank" rel="noopener">Dribbble ↗</a>
+        </div>
+      </div>
+
+      <div class="m-big-nest-footer">NEST</div>
+    </section>
+
+  </main>
+
+  <!-- Fixed Bottom Navigation Bar & Progress Bar -->
+  <footer id="mobile-bottom-bar">
+    <div id="mobile-progress-track">
+      <div id="mobile-progress-fill"></div>
+    </div>
+    <div class="m-section-label" id="mobile-section-name">Overview</div>
+    <div class="m-arrow-controls">
+      <button class="m-nav-arrow" id="btn-prev-slide" aria-label="Previous section">←</button>
+      <button class="m-nav-arrow" id="btn-next-slide" aria-label="Next section">→</button>
+    </div>
+  </footer>
+
+  <!-- Mobile Interaction Script -->
+  <script src="./public/mobile.js"></script>
+</body>
+
+</html>

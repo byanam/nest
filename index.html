@@ -7,6 +7,13 @@
   <title>NEST</title>
   <meta name="description" content="A high-performance, neo-brutalist creative studio landing page with bespoke interactive mechanics, tactile physics, and Awwwards-grade kinetic smooth scrolling." />
   <meta name="theme-color" content="#2F2F2F" />
+
+  <!-- Mobile redirect for handheld devices and viewports <= 768px -->
+  <script>
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (window.innerWidth <= 768 && !window.location.search.includes('desktop=1'))) {
+      window.location.replace('mobile.html' + window.location.search + window.location.hash);
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link

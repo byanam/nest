@@ -55,6 +55,12 @@
 - **Stationary Button Physics**: Instant tactile feedback without disorienting layout lift.
 - **Hidden Scrollbars**: Complete elimination of browser scrollbars across Chrome, Safari, Firefox, and Edge while preserving natural mouse/trackpad scrolling.
 
+### 8. 📱 Horizontal Mobile-First Flow (Left-to-Right)
+- Replaces tedious vertical mobile scrolling with a fluid, full-screen horizontal snap track (`100vw × 100dvh`).
+- Users swipe horizontally left-to-right across 7 bespoke chapters: Hero, Showcase, Clients, Pricing, Feedback, About Us, and FAQ & Colophon.
+- Real-time slide counter (`01 / 07`), live progress fill line, tap arrow controls, and quick-jump drawer navigation.
+- Dedicated standalone mobile architecture (`mobile.html` + `public/mobile.css` + `public/mobile.js`) ensuring zero regression on the desktop version.
+
 ---
 
 ## 🎨 Design System & Color Tokens
@@ -84,27 +90,15 @@
 
 ## 🚀 Getting Started
 
-No build tools or heavy package managers required. The project is completely self-contained and runs in any modern browser.
+### Local Development
 
-### Option 1: Direct Static Run
-Open `index.html` directly in your browser:
+Launch the lightweight development server:
+
 ```bash
-# macOS
-open index.html
-
-# Linux
-xdg-open index.html
+npx vite
 ```
 
-### Option 2: Local Development Server
-```bash
-# Using Python
-python3 -m http.server 3000
-
-# Or using Node / npx
-npx serve .
-```
-Navigate to `http://localhost:3000`.
+Visit `http://localhost:3000` to view the desktop version, or append `?mobile=1` (e.g. `http://localhost:3000/mobile.html?mobile=1`) to test the horizontal mobile interface.
 
 ---
 
@@ -114,13 +108,16 @@ Navigate to `http://localhost:3000`.
 Nest landing page/
 ├── .github/workflows/
 │   └── static.yml          # Automated GitHub Pages deployment
-├── index.html              # Core semantic HTML5 layout & SVG definitions
+├── index.html              # Core desktop semantic HTML5 layout & SVG definitions
+├── mobile.html             # Mobile horizontal snap layout (left-to-right)
 ├── vite.config.js          # Lightweight Vite configuration for local preview
 ├── package.json            # Project manifest
 ├── .nojekyll               # GitHub Pages Jekyll bypass
 ├── public/
-│   ├── styles.css          # Design tokens, responsive scaler & animations
-│   ├── script.js           # Scroll logic, interchange engine & observers
+│   ├── styles.css          # Desktop design tokens, responsive scaler & animations
+│   ├── script.js           # Desktop scroll logic, interchange engine & observers
+│   ├── mobile.css          # Mobile horizontal snap layout & touch styling
+│   ├── mobile.js           # Mobile slide tracker, drawer, clock & SVG animators
 │   ├── lenis.min.js        # Self-contained kinetic smooth scroll engine
 │   ├── favicon.svg         # Studio yellow 'N' vector favicon
 │   ├── team.jpg            # Studio team photograph
